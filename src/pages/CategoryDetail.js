@@ -42,7 +42,7 @@ export const CategoryDetail = ( {match} ) => {
                             <div className="col-lg-4 col-md-6 mb-4" key={p.id}>
                                 <div className="card h-100">
                                     <Link exact to={{pathname: `/product/${p.id}`, fromDashboard: false }}>
-                                        <img className="card-img-top" src={p.image} height="180" alt=""/>
+                                        <img className="card-img-top" src={`http://127.0.0.1:8000` + p.image} height="180" width="245"/>
                                         Детали
                                     </Link>
                                     <div className="card-body">

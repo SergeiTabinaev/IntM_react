@@ -1,7 +1,5 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
-import {CartContext} from "../context/cart/cartContext";
 
 
 
@@ -12,9 +10,9 @@ export const Cart = () => {
     useEffect(() => {
         axios({
             method: "GET",
-            url: `http://127.0.0.1:8000/api/cart/`
+            url: `http://127.0.0.1:8000/api/cart/cartproducts/`
         }).then(response => {
-            // setProds(response.data[0].products)
+            // setProds(response.data[1].products)
             setProds(response.data)
         })
     }, [])
@@ -22,15 +20,13 @@ export const Cart = () => {
 
     const del = async (id) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
-            await fetch(`http://127.0.0.1:8000/api/cart/${id}/`, {
+            await fetch(`http://127.0.0.1:8000/api/cart/cartproducts/${id}`, {
                 method: 'DELETE'
             });
 
-            setProds(prods.filter((cp) => cp.id !== id));
+            setProds(prods.filter((cp) => cp.product.id !== id));
         }
     }
-
-
 
     return(
         <div>
@@ -53,7 +49,7 @@ export const Cart = () => {
                 <tr>
                     <th scope="row"> {cp.product.title} </th>
                     <td className="w-25">
-                        {/*<img src="" alt='' className="img-fluid"/>*/}
+                        <img className="img-fluid" src={`http://127.0.0.1:8000` + cp.product.image} height="180" alt=""/>
                     </td>
                     <td>
                         {cp.product.price} руб.

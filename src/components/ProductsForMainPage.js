@@ -25,6 +25,7 @@ export const ProductsForMainPage = ({addToCart}) => {
                     <div className="card h-100">
                         <Link exact to={{pathname: `/product/${pr.id}`, fromDashboard: false}}>
                             {/*<img className="card-img-top" src={} alt=""/>*/}
+                            <img src={pr.image} height="180" width="245"/>
                         </Link>
                         <div className="card-body">
                             <h4 className="card-title">

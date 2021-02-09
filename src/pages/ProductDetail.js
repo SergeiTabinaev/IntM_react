@@ -18,8 +18,7 @@ export const ProductDetail = ( {match} ) => {
             setProducts(response.data)
             setCats(response.data.category)
             setFeatures(response.data.features)
-            // console.log(response.data.features[0]['feature'])
-            // console.log(response.data.features['feature'])
+
         })
     }, [id])
 

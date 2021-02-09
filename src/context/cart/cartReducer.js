@@ -6,11 +6,11 @@ const handlers = {
     ...state,
     cart_product: [...state.cart_product, payload]
     }),
-    [FETCH_CART]: (state, {payload}) => ({...state, cart_product: payload, loading: false}),
-    [REMOVE_FROM_CART]: (state, {payload}) => ({
-    ...state,
-    cart_product: state.cart_product.filter(cart_product => cart_product.id !== payload)
-}),
+    // [FETCH_CART]: (state, {payload}) => ({...state, cart_product: payload, loading: false}),
+    // [REMOVE_FROM_CART]: (state, {payload}) => ({
+    // ...state,
+    // cart_product: state.cart_product.filter(cart_product => cart_product.id !== payload)
+// }),
     DEFAULT: state => state
 }
 
