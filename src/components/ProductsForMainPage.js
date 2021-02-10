@@ -32,13 +32,13 @@ export const ProductsForMainPage = ({addToCart}) => {
                                 {pr.title}
                             </h4>
                             <h5>{pr.price} руб.</h5>
-                            <Link exact to={{pathname: `/cart/`, fromDashboard: false}} >
+
                             <button
                                 type="button"
                                 className="btn btn-danger"
                                 onClick={() => addToCart(pr.id)}
                             > Добавить в корзину</button>
-                            </Link>
+
                         </div>
                     </div>
                 </div>))}

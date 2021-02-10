@@ -24,7 +24,7 @@ export const Cart = () => {
                 method: 'DELETE'
             });
 
-            setProds(prods.filter((cp) => cp.product.id !== id));
+            setProds(prods.filter((cp) => cp.id !== id));
         }
     }
 

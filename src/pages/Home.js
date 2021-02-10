@@ -1,11 +1,10 @@
 import React, {useContext} from "react";
 import {Sidebar} from "../components/Sidebar";
 import {ProductsForMainPage} from "../components/ProductsForMainPage";
-import {CartContext} from "../context/cart/cartContext";
+
 // import {Loader} from "../components/loader";
 
 export const Home = () => {
-    const {addToCart} = useContext(CartContext)
 
     return(
             <div className="container">
@@ -16,7 +15,7 @@ export const Home = () => {
                     </div>
 
                     <div className="col-lg-9">
-                        <ProductsForMainPage addToCart={addToCart}/>
+                        <ProductsForMainPage />
                         {/*{loading*/}
                         {/*    ? <Loader />*/}
                         {/*    : <ProductsForMainPage cart_product={cart_product}/>*/}

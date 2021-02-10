@@ -22,6 +22,41 @@ export const ProductDetail = ( {match} ) => {
         })
     }, [id])
 
+
+
+
+
+
+
+    // const [CartProducts, setCartProducts] = useState([])
+    // useEffect(() => {
+    //     axios({
+    //         method: "GET",
+    //         url: `http://127.0.0.1:8000/api/cart/${id}`
+    //     }).then(response => {
+    //         setCartProducts(response.data.products)
+    //     })
+    // }, [id])
+    //
+    //
+    // const addToCart = async (id) => {
+    //         await fetch(`http://127.0.0.1:8000/api/add-to-cart/${id}`, {
+    //             method: 'GET'
+    //         });
+    //
+    //         setCartProducts(CartProducts.map(
+    //             (cp) => {
+    //                 if (cp.id !== id)
+    //                 {cp.append(id)}
+    //                 return cp;
+    //             }
+    //         ));
+    // }
+
+
+
+
+
     return(
         <div>
             <nav aria-label="breadcrumb" className="mt-5">
@@ -49,9 +84,14 @@ export const ProductDetail = ( {match} ) => {
                     <p>Цена: {products.price} руб.</p>
                     <p>Описание: {products.description}</p>
                     <hr/>
-                        <Link exact to={{pathname: `/cart`, fromDashboard: false}}>
-                            <button className="btn btn-danger">Добавить в корзину(написать обработчик)</button>
-                        </Link>
+
+                            <button
+                                type="button"
+                                className="btn btn-danger"
+                                onClick={() => addToCart(products.slug)}>
+                                Добавить в корзину
+                            </button>
+
 
                 </div>
                 <p className="mt-4">Характеристики:</p>
