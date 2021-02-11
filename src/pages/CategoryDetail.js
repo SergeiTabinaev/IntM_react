@@ -3,6 +3,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import {Sidebar} from "../components/Sidebar";
 
+// вывод списка товаров определенной категории
 export const CategoryDetail = ( {match} ) => {
 
     const [category, setCategory] = useState({})

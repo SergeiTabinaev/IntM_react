@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-
-
+//Еще в работе: логика заказа товара
 export const Cart = () => {
 
     const [prods, setProds] = useState([])

@@ -1,5 +1,6 @@
 import React from 'react'
 
+// еще в работе: поиск товаров
 export const SearchForm = () => {
     return (<div>
 

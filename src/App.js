@@ -14,7 +14,7 @@ import {CartState} from "./context/cart/cartState";
 
 function App() {
   return (
-        <CartState>{/*сможем управлять из общего состояния (вызывать из любых комп-тов при помощи context и reducer )*/}
+        <CartState>
           <BrowserRouter>
             <Navbar/>
             <div className="container pt-xl-5">

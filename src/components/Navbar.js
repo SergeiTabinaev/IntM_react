@@ -1,6 +1,8 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
+// Навбар
+// еще в работе: логика регистрации и авторизации, вывод кол-во товаров в корзине
 export const Navbar = () => {
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

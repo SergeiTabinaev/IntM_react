@@ -3,6 +3,9 @@ import {SearchForm} from "./Search";
 import {Link} from "react-router-dom";
 import axios from "axios";
 
+
+// вывод категорий товаров
+// еще в работе: поиск товаров
 export const Sidebar = () => {
 
     const [cats, setCats] = useState([])
