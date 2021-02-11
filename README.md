@@ -1,3 +1,14 @@
+Фронт на React для интернет магазина api https://github.com/SergeiTabinaev/IntM_django
+
+Интернет магазин в возможностью создания через админку: категорий, товаров, характеристик и значений
+
+Что еще в работе:
+
+Авторизация регистрация; логика заказа товара; useReducer и useState для добавления в корзину(с логикой изменения кол-ва товара; Поиск товара
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
