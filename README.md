@@ -1,4 +1,4 @@
-Фронт на React для интернет магазина api https://github.com/SergeiTabinaev/IntM_django
+Фронт на React для интернет магазина. ссылка на backend api https://github.com/SergeiTabinaev/IntM_django
 
 Интернет магазин в возможностью создания через админку: категорий, товаров, характеристик и значений
 
