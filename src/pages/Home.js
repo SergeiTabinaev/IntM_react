@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import {Sidebar} from "../components/Sidebar";
 import {ProductsForMainPage} from "../components/ProductsForMainPage";
+import {CatsContext} from "../context/cats/catsContext";
 
 // import {Loader} from "../components/loader";
 
@@ -16,10 +17,6 @@ export const Home = () => {
 
                     <div className="col-lg-9">
                         <ProductsForMainPage />
-                        {/*{loading*/}
-                        {/*    ? <Loader />*/}
-                        {/*    : <ProductsForMainPage cart_product={cart_product}/>*/}
-                        {/*}*/}
                     </div>
                 </div>
             </div>

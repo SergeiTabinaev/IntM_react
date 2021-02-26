@@ -1,31 +1,24 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import React, {useEffect, useContext} from "react"
+import {CartContext} from "../context/cart/cartContext"
 
 //Еще в работе: логика заказа товара
-export const Cart = () => {
-
-    const [prods, setProds] = useState([])
+export const Cart = ({match}) => {
+    const {fetchCartProducts, cart_products} = useContext(CartContext)
+    const id = match.params.id
 
     useEffect(() => {
-        axios({
-            method: "GET",
-            url: `http://127.0.0.1:8000/api/cart/cartproducts/`
-        }).then(response => {
-            // setProds(response.data[1].products)
-            setProds(response.data)
-        })
-    }, [])
+        fetchCartProducts(id)
+        // eslint-disable-next-line
+    }, [id])
 
-
-    const del = async (id) => {
-        if (window.confirm('Are you sure you want to delete this product?')) {
-            await fetch(`http://127.0.0.1:8000/api/cart/cartproducts/${id}`, {
-                method: 'DELETE'
-            });
-
-            setProds(prods.filter((cp) => cp.id !== id));
-        }
-    }
+    // const del = async (id) => {
+    //     if (window.confirm('Are you sure you want to delete this product?')) {
+    //         await fetch(`http://127.0.0.1:8000/api/cart/cartproducts/${id}`, {
+    //             method: 'DELETE'
+    //         });
+    //         setProds(prods.filter((cp) => cp.id !== id));
+    //     }
+    // }
 
     return(
         <div>
@@ -44,7 +37,7 @@ export const Cart = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {prods.map(cp => (
+                {cart_products.map(cp => (
                 <tr>
                     <th scope="row"> {cp.product.title} </th>
                     <td className="w-25">
@@ -63,12 +56,12 @@ export const Cart = () => {
                     </td>
                     <td> {cp.final_price} руб.</td>
                     <td>
-                            <button
-                                type="button"
-                                className="btn btn-danger"
-                                onClick={() => del(cp.id)}>
-                                Удалить из корзины
-                            </button>
+                            {/*<button*/}
+                            {/*    type="button"*/}
+                            {/*    className="btn btn-danger"*/}
+                            {/*    onClick={() => del(cp.id)}>*/}
+                            {/*    Удалить из корзины*/}
+                            {/*</button>*/}
                     </td>
                 </tr>
                 ))}

@@ -1,51 +1,60 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {Fragment, useContext, useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {AuthContext} from "../context/auth/authContext";
 
-// Навбар
-// еще в работе: логика регистрации и авторизации, вывод кол-во товаров в корзине
 export const Navbar = () => {
+
+    const {logout, isAuthenticated, checkAuthenticated} = useContext(AuthContext)
+    const [redirect, setRedirect] = useState(false)
+
+    useEffect(() => {
+        checkAuthenticated()
+        // eslint-disable-next-line
+    }, [])
+
+    const logout_user = () => {
+        logout();
+        setRedirect(true)
+    }
+
+    const guestLinks = () => (
+        <Fragment>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/login'>Login</Link>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/signup'>Sign Up</Link>
+            </li>
+        </Fragment>
+    )
+
+    const authLinks = () => (
+        <li className='nav-item'>
+            <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
+        </li>
+    )
+
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
-                <NavLink className="navbar-brand" to='/' exact>IMagazin Главная</NavLink>
+                <Link className="navbar-brand" to='/' exact>IMagazin Главная</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     {/*<span className="navbar-toggler-icon"></span>*/}
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
-                    авторизация регистрация или приветствие покупателя
-                    {/*<ul className="navbar-nav">*/}
-                    {/*    {% if not request.user.is_authenticated %}*/}
-                    {/*    <li>*/}
-                    {/*        <NavLink className="nav-link text-white" href="{% url 'login' %}">Авторизация</NavLink>*/}
-                    {/*    </li>*/}
-                    {/*    <li>*/}
-                    {/*        <NavLink className="nav-link text-white" href="{% url 'registration' %}">Регистрация</NavLink>*/}
-                    {/*    </li>*/}
-                    {/*    {% else %}*/}
-                    {/*    <li className="nav-item">*/}
-                    {/*        <span className="navbar-text text-light">Здравствуйте, {% if request.user.is_authenticated %}*/}
-                    {/*        <span className="badge badge-danger">*/}
-                    {/*        <NavLink href="#" style="text-decoration: none; font-size: 14px;">*/}
-                    {/*            {{ request.user.username }}*/}
-                    {/*        </NavLink>*/}
-                    {/*        </span>{% else %} гоcть!{% endif %}*/}
-                    {/*        <a href="{% url 'logout' %}">| Выйти</a>*/}
-                    {/*        </span>*/}
-                    {/*    </li>*/}
-                    {/*    {% endif %}*/}
-                    {/*</ul>*/}
+                    {isAuthenticated ? authLinks() : guestLinks()}
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <NavLink exact className="nav-link" to='/cart'>Корзина
+                            <Link exact className="nav-link" to='/cart'>Корзина
                                 <span className="badge badge-pill badge-danger">
                                     {/*{{cart.products.count}} кол-во товаров в корзине*/} кол-во товаров в корзине
                                 </span>
-                            </NavLink>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <NavLink exact className="nav-link" to='/about'>Контакты
-                            </NavLink>
+                            <Link exact className="nav-link" to='/about'>Контакты
+                            </Link>
                         </li>
                     </ul>
                 </div>

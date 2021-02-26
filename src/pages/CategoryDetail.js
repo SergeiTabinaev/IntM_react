@@ -1,25 +1,23 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {Sidebar} from "../components/Sidebar";
+import {CatsContext} from "../context/cats/catsContext";
 
 // вывод списка товаров определенной категории
 export const CategoryDetail = ( {match} ) => {
-
-    const [category, setCategory] = useState({})
-    const [products, setProducts] = useState([])
-    const id = match.params.id    
+    const {fetchProducts, fetchCats, cats, products} = useContext(CatsContext)
+    const id = match.params.id
 
     useEffect(() => {
-        axios({
-            method: "GET",
-            url: `http://127.0.0.1:8000/api/category/${id}/`
-        }).then(response => {
-            setCategory(response.data)
-            setProducts(response.data.products)
-        })
-        }, [id])
-    
+        fetchProducts(id)
+        // eslint-disable-next-line
+    }, [id])
+
+    useEffect(() => {
+        fetchCats()
+        // eslint-disable-next-line
+    }, [])
 
     return(
             <div className="row">
@@ -33,7 +31,7 @@ export const CategoryDetail = ( {match} ) => {
                                 <Link exact to='/'>Главная</Link>
                             </li>
                             <li className="breadcrumb-item active">
-                                {category.name}
+                                {cats.name}
                             </li>
                         </ol>
                     </nav>
